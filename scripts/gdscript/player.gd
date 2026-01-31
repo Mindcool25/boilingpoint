@@ -98,7 +98,7 @@ func handle_jumping() -> void:
 	# Charge up jump
 	if Input.is_action_pressed("jump"):
 		locked_jump = true
-		jump_power += 0.02
+		jump_power += 0.01
 		# Change color of pointer for how fast (temp)
 		var tier = snappedi(jump_power, 1)
 		if tier == 0:
