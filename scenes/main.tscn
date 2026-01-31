@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://cx5veeu44papb" path="res://scripts/cs/Main.cs" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dv82wfrgij2th" path="res://scenes/player.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://85uhplkpkgx8" path="res://scenes/Level.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://dcy63ch3q01c7" path="res://scenes/background.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ce8s2rqlgoua3" path="res://scenes/background.tscn" id="4_jyhfs"]
 
 [node name="Main" type="Node2D" unique_id=447890055]
 script = ExtResource("1_o5qli")
 LockVelocity = 3000.0
+ScreenEdges = 310.0
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1541486730]
 position_smoothing_enabled = true

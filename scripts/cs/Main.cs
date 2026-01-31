@@ -9,6 +9,8 @@ public partial class Main : Node2D
 	private CharacterBody2D player;
 	[Export]
 	public float LockVelocity {get; set;} = 2500F;
+	[Export]
+	public float ScreenEdges {get;set;} = 500F;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -19,7 +21,7 @@ public partial class Main : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		camera.Position = new Vector2(camera.Position.X, player.Position.Y);
+		camera.Position = new Vector2(Math.Clamp(player.Position.X, -ScreenEdges, ScreenEdges), player.Position.Y);
 		if (player.Velocity.Y > LockVelocity){
 			camera.PositionSmoothingEnabled = false;
 		}
