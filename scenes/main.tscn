@@ -24,7 +24,6 @@ repeat_times = 7
 
 [node name="Player" parent="." unique_id=786890291 instance=ExtResource("2_0wfyh")]
 z_index = 10
-position = Vector2(310, -4787)
 
 [node name="Level" parent="." unique_id=1286472519 instance=ExtResource("3_sugp2")]
 z_index = -10
