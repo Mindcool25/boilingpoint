@@ -13,6 +13,7 @@ LockVelocity = 3000.0
 position_smoothing_enabled = true
 
 [node name="Background" parent="Camera" unique_id=354672733 instance=ExtResource("4_jyhfs")]
+visible = false
 z_index = -4096
 scroll_scale = Vector2(1, 0.5)
 scroll_offset = Vector2(0, 1)
