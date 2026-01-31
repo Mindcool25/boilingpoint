@@ -12,7 +12,7 @@ config_version=5
 
 config/name="boilingpoint"
 run/main_scene="uid://dlptbuuikf5ok"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -65,4 +65,5 @@ start={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
