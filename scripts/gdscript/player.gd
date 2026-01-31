@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var gravity: float = 4000
 @export var player_speed: float = 100
 @export var player_acc: float = 0.75
-@export var player_fric: float = 0.1
+@export var player_fric: float = 0.3
 
 @export var pointer: Sprite2D = null
 @export var pointer_speed: float = 0.05
@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 				state = States.WALKING
 				locked_jump = false
+				self.pointer.visible = false
 			handle_jumping()
 		States.IN_AIR:
 			handle_air(delta)
@@ -80,6 +81,7 @@ func handle_jumping() -> void:
 	if Input.is_action_just_released("jump") and locked_jump:
 		self.velocity = Vector2.from_angle(pointer_angle) * jump_power
 		self.locked_jump = false
+		self.pointer.visible = false
 		self.state = States.WALKING
 	return
 
