@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bvaqj4xv5cy7c" path="res://icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dimgd1qjsohd6" path="res://scripts/gdscript/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://ycbtkec13xxp" path="res://assets/arrow.png" id="3_qhqgy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g2els"]
 animations = [{
@@ -15,22 +16,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(32, 32)
+size = Vector2(28, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=786890291]
+[node name="Player" type="CharacterBody2D" unique_id=786890291 node_paths=PackedStringArray("pointer")]
 floor_stop_on_slope = false
 floor_max_angle = 0.567232
 script = ExtResource("1_g2els")
-player_acc = 0.75
+pointer = NodePath("Pointer")
+jump_low = 800.0
+jump_medium = 1300.0
+jump_high = 1600.0
 
 [node name="PlayerBody" type="AnimatedSprite2D" parent="." unique_id=290980320]
-scale = Vector2(0.25, 0.25)
+position = Vector2(0, -8)
+scale = Vector2(0.25, 0.375)
 sprite_frames = SubResource("SpriteFrames_g2els")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1891597192]
 shape = SubResource("RectangleShape2D_qhqgy")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1695402074]
+[node name="Pointer" type="Sprite2D" parent="." unique_id=1695402074]
 position = Vector2(2.3841858e-07, -35)
-scale = Vector2(0.04, 0.195)
-texture = ExtResource("1_3vyb7")
+texture = ExtResource("3_qhqgy")

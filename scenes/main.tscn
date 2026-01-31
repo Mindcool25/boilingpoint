@@ -12,7 +12,5 @@ LockVelocity = 3000.0
 position_smoothing_enabled = true
 
 [node name="Player" parent="." unique_id=786890291 instance=ExtResource("2_0wfyh")]
-position = Vector2(190, -26)
 
 [node name="Level" parent="." unique_id=1286472519 instance=ExtResource("3_sugp2")]
-position = Vector2(-70, 162)
