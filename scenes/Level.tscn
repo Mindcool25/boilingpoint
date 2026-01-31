@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://byl3cvpbqwnkk" path="res://assets/hell_platforms_tileset.png" id="1_uhqny"]
 [ext_resource type="Texture2D" uid="uid://hv7v6w35vafv" path="res://assets/hell_platforms_2.png" id="2_k5jlv"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_k5jlv"]
+rough = true
+absorbent = true
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5jlv"]
 texture = ExtResource("1_uhqny")
 texture_region_size = Vector2i(32, 32)
@@ -83,6 +87,7 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_6vs76"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_k5jlv")
 terrain_set_0/mode = 2
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
