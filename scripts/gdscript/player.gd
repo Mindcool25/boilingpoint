@@ -24,7 +24,7 @@ var jump_power: float = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.pointer.visible = false
+	self.pointer.visible = true
 	pass # Replace with function body.
 
 
@@ -44,12 +44,16 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
 				state = States.WALKING
 				locked_jump = false
-				self.pointer.visible = false
 			handle_jumping()
 		States.IN_AIR:
 			handle_air(delta)
 
 	move_and_slide()
+
+	# Move the pointer if the jump angle isn't locked in
+	if not locked_jump:
+		move_pointer()
+
 
 	# Changing states if in the air
 	if not self.is_on_floor():
@@ -63,21 +67,14 @@ func _physics_process(delta: float) -> void:
 
 func handle_walking() -> void:
 	# Right and left movement
-	self.pointer.visible = false
-	var dir = Input.get_axis("left", "right")
-	if dir != 0 and self.is_on_floor():
-		velocity.x = lerp(velocity.x, dir * player_speed, player_acc)
-	# Switching to jumping when hitting the jump button
+	if not locked_jump:
+		var dir = Input.get_axis("left", "right")
+		if dir != 0 and self.is_on_floor():
+			velocity.x = lerp(velocity.x, dir * player_speed, player_acc)
+		# Switching to jumping when hitting the jump button
 	return
 
 func handle_jumping() -> void:
-	# Make the pointer show up
-	if not self.pointer.visible:
-		self.pointer.visible = true
-
-	# Move the pointer if the jump angle isn't locked in
-	if not locked_jump:
-		move_pointer()
 	
 	# Locking in jump angle
 	if Input.is_action_just_pressed("jump") and not locked_jump:
@@ -107,7 +104,6 @@ func handle_jumping() -> void:
 		elif tier >= 2:
 			self.velocity = Vector2.from_angle(pointer_angle) * jump_high
 		self.locked_jump = false
-		self.pointer.visible = false
 		self.state = States.WALKING
 		self.pointer.modulate = Color(1, 1, 1)
 	return
