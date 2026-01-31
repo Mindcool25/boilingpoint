@@ -7,6 +7,7 @@ public partial class Main : Node2D
 
 	private Camera2D camera;
 	private CharacterBody2D player;
+	private AudioStreamPlayer music;
 	[Export]
 	public float LockVelocity {get; set;} = 2500F;
 	[Export]
@@ -16,6 +17,7 @@ public partial class Main : Node2D
 	{
 		this.camera = GetNode<Camera2D>("Camera");
 		this.player = GetNode<CharacterBody2D>("Player");
+		this.music = GetNode<AudioStreamPlayer>("Music");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,6 +29,9 @@ public partial class Main : Node2D
 		}
 		else {
 			camera.PositionSmoothingEnabled = true;
+		}
+		if (!music.Playing){
+			music.Play();
 		}
 
 	}
