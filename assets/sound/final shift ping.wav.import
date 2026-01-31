@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7h26fx0hx78b"
+path="res://.godot/imported/final shift ping.wav-f1118b399064ead3b9e0dd15b6d25437.sample"
+
+[deps]
+
+source_file="res://assets/sound/final shift ping.wav"
+dest_files=["res://.godot/imported/final shift ping.wav-f1118b399064ead3b9e0dd15b6d25437.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

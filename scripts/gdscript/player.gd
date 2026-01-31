@@ -14,6 +14,10 @@ extends CharacterBody2D
 
 @export var anim_sprite: AnimatedSprite2D = null
 
+@export var land_sound: AudioStreamPlayer = null
+@export var shift_sound: AudioStreamPlayer = null
+@export var fully_charged_sound: AudioStreamPlayer = null
+
 
 enum States {WALKING, JUMPING, IN_AIR}
 
@@ -80,6 +84,10 @@ func _physics_process(delta: float) -> void:
 	elif state != States.JUMPING:
 		state = States.WALKING
 	
+	if state != States.WALKING and self.is_on_floor():
+		self.land_sound.play()
+		pass
+	
 	if self.state != States.IN_AIR:
 		velocity.x = lerp(velocity.x, 0.0, player_fric)
 	return
@@ -94,7 +102,6 @@ func handle_walking() -> void:
 	return
 
 func handle_jumping() -> void:
-	
 	# Charge up jump
 	if Input.is_action_pressed("jump"):
 		locked_jump = true
@@ -102,16 +109,22 @@ func handle_jumping() -> void:
 		# Change color of pointer for how fast (temp)
 		var tier = jump_power
 		if tier <= 1:
+			if not self.shift_sound.playing:
+				self.shift_sound.play()
 			self.pointer.modulate = Color(0, 0, 1)
 			self.anim_sprite.play("charge")
 			self.anim_sprite.stop()
 			self.anim_sprite.frame = 0
 		elif tier <= 2:
+			if not self.shift_sound.playing:
+				self.shift_sound.play()
 			self.pointer.modulate = Color(0, 1, 0)
 			self.anim_sprite.play("charge")
 			self.anim_sprite.stop()
 			self.anim_sprite.frame = 1
 		elif tier > 2:
+			if not self.fully_charged_sound.playing:
+				self.fully_charged_sound.play()
 			self.pointer.modulate = Color(1, 0, 0)
 			self.anim_sprite.play("charge")
 			self.anim_sprite.stop()
@@ -121,6 +134,7 @@ func handle_jumping() -> void:
 	# Actually jumping
 	if Input.is_action_just_released("jump") and locked_jump:
 		var tier = jump_power
+		self.state = States.IN_AIR
 		if tier <= 1:
 			self.velocity = Vector2.from_angle(pointer_angle) * jump_low
 		elif tier <= 2:

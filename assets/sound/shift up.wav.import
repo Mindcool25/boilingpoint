@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccw5doakcnatj"
+path="res://.godot/imported/shift up.wav-b1cc1d529ffd648c63e5bc9d7298a5ad.sample"
+
+[deps]
+
+source_file="res://assets/sound/shift up.wav"
+dest_files=["res://.godot/imported/shift up.wav-b1cc1d529ffd648c63e5bc9d7298a5ad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

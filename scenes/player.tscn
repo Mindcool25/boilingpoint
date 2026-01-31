@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dimgd1qjsohd6" path="res://scripts/gdscript/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ckmviwsdllcj2" path="res://assets/character.png" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://ycbtkec13xxp" path="res://assets/arrow.png" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://c3diq56m6qihn" path="res://assets/sound/wet squeltch plus bone.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://cy3eh1u165pwa" path="res://assets/sound/shift upv2.wav" id="4_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://b7h26fx0hx78b" path="res://assets/sound/final shift ping.wav" id="5_fjrip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
 atlas = ExtResource("2_qhqgy")
@@ -100,7 +103,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(22, 32)
 
-[node name="Player" type="CharacterBody2D" unique_id=786890291 node_paths=PackedStringArray("pointer", "anim_sprite")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
+radius = 11.0
+height = 46.0
+
+[node name="Player" type="CharacterBody2D" unique_id=786890291 node_paths=PackedStringArray("pointer", "anim_sprite", "land_sound", "shift_sound", "fully_charged_sound")]
 floor_stop_on_slope = false
 floor_max_angle = 0.567232
 script = ExtResource("1_g2els")
@@ -109,6 +116,9 @@ jump_low = 800.0
 jump_medium = 1300.0
 jump_high = 1600.0
 anim_sprite = NodePath("PlayerBody")
+land_sound = NodePath("LandSound")
+shift_sound = NodePath("LandSound")
+fully_charged_sound = NodePath("FullyCharged")
 
 [node name="PlayerBody" type="AnimatedSprite2D" parent="." unique_id=290980320]
 position = Vector2(0, -16)
@@ -121,3 +131,21 @@ shape = SubResource("RectangleShape2D_qhqgy")
 [node name="Pointer" type="Sprite2D" parent="." unique_id=1695402074]
 position = Vector2(0, -51)
 texture = ExtResource("3_qhqgy")
+
+[node name="Charge" type="AudioStreamPlayer" parent="." unique_id=1797686066]
+stream = ExtResource("4_tuyoq")
+volume_db = 24.0
+
+[node name="FullyCharged" type="AudioStreamPlayer" parent="." unique_id=422291812]
+stream = ExtResource("5_fjrip")
+volume_db = 10.947
+
+[node name="LandSound" type="AudioStreamPlayer" parent="." unique_id=573193539]
+stream = ExtResource("4_dqkch")
+volume_db = -80.0
+
+[node name="PortalCollide" type="Area2D" parent="." unique_id=996887047]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PortalCollide" unique_id=1906785391]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_tuyoq")
