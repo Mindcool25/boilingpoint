@@ -37,12 +37,9 @@ func _physics_process(delta: float) -> void:
 			# Change to jumping action if walking
 			if Input.is_action_pressed("jump"):
 				state = States.JUMPING
-			handle_walking()
+			else:
+				handle_walking()
 		States.JUMPING:
-			# Change to walking if  wv wl
-			if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
-				state = States.WALKING
-				locked_jump = false
 			handle_jumping()
 		States.IN_AIR:
 			handle_air(delta)
