@@ -142,7 +142,7 @@ volume_db = 10.947
 
 [node name="LandSound" type="AudioStreamPlayer" parent="." unique_id=573193539]
 stream = ExtResource("4_dqkch")
-volume_db = -80.0
+volume_db = -9.05
 
 [node name="PortalCollide" type="Area2D" parent="." unique_id=996887047]
 

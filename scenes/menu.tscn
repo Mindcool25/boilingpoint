@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cncc0ehk58ii7"]
+
+[ext_resource type="Script" uid="uid://dxuohnlxg750h" path="res://scripts/gdscript/menu.gd" id="1_vjb58"]
+[ext_resource type="Texture2D" uid="uid://dfvupsv135xhm" path="res://assets/TitleScreen.png" id="1_yqeox"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqeox"]
+font_size = 30
+font_color = Color(0.81960785, 0.8039216, 0.6862745, 1)
+
+[node name="Menu" type="Control" unique_id=1268322595]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vjb58")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1397519519]
+
+[node name="TitleScreen" type="Sprite2D" parent="." unique_id=1924573845]
+position = Vector2(480, 270)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yqeox")
+
+[node name="Label" type="Label" parent="." unique_id=679638857]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 223.0
+offset_right = 378.0
+offset_bottom = 265.0
+text = "Press Start"
+label_settings = SubResource("LabelSettings_yqeox")
