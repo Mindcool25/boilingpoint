@@ -28,7 +28,8 @@ jump_medium = 1300.0
 jump_high = 1600.0
 
 [node name="PlayerBody" type="AnimatedSprite2D" parent="." unique_id=290980320]
-scale = Vector2(0.25, 0.25)
+position = Vector2(0, -8)
+scale = Vector2(0.25, 0.375)
 sprite_frames = SubResource("SpriteFrames_g2els")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=1891597192]
