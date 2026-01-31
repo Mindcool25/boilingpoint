@@ -14,6 +14,13 @@ config/name="boilingpoint"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=4
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="boilingpoint"
