@@ -76,13 +76,9 @@ func handle_walking() -> void:
 
 func handle_jumping() -> void:
 	
-	# Locking in jump angle
-	if Input.is_action_just_pressed("jump") and not locked_jump:
-		locked_jump = true
-		jump_power = 0.0
-	
 	# Charge up jump
-	if Input.is_action_pressed("jump") and locked_jump:
+	if Input.is_action_pressed("jump"):
+		locked_jump = true
 		jump_power += 0.02
 		# Change color of pointer for how fast (temp)
 		var tier = snappedi(jump_power, 1)
@@ -104,6 +100,7 @@ func handle_jumping() -> void:
 		elif tier >= 2:
 			self.velocity = Vector2.from_angle(pointer_angle) * jump_high
 		self.locked_jump = false
+		jump_power = 0.0
 		self.state = States.WALKING
 		self.pointer.modulate = Color(1, 1, 1)
 	return
