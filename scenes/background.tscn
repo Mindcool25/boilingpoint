@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ce8s2rqlgoua3"]
+
+[ext_resource type="Texture2D" uid="uid://bn1qg4g26hr2x" path="res://assets/hell_bkgrnd.png" id="1_bkp1e"]
+
+[node name="Background" type="Parallax2D" unique_id=354672733]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=881779131]
+scale = Vector2(5.6645827, 5.6645827)
+texture = ExtResource("1_bkp1e")
