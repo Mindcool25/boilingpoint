@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ce8s2rqlgoua3"]
+[gd_scene format=3 uid="uid://dcy63ch3q01c7"]
 
-[ext_resource type="Texture2D" uid="uid://bn1qg4g26hr2x" path="res://assets/hell_bkgrnd.png" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://u7jpkea33w7l" path="res://assets/bckgrnd_better.png" id="1_bkp1e"]
 
 [node name="Background" type="Parallax2D" unique_id=354672733]
 
