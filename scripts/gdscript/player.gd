@@ -8,6 +8,10 @@ extends CharacterBody2D
 @export var pointer: Sprite2D = null
 @export var pointer_speed: float = 0.05
 
+@export var jump_low: float = 0.0
+@export var jump_medium: float = 0.0
+@export var jump_high: float = 0.0
+
 
 enum States {WALKING, JUMPING, IN_AIR}
 
@@ -51,16 +55,17 @@ func _physics_process(delta: float) -> void:
 		state = States.IN_AIR
 	elif state != States.JUMPING:
 		state = States.WALKING
+	
+	if self.state != States.IN_AIR:
+		velocity.x = lerp(velocity.x, 0.0, player_fric)
 	return
 
 func handle_walking() -> void:
 	# Right and left movement
+	self.pointer.visible = false
 	var dir = Input.get_axis("left", "right")
 	if dir != 0 and self.is_on_floor():
 		velocity.x = lerp(velocity.x, dir * player_speed, player_acc)
-	else:
-		velocity.x = lerp(velocity.x, 0.0, player_fric)
-
 	# Switching to jumping when hitting the jump button
 	return
 
@@ -77,6 +82,7 @@ func handle_jumping() -> void:
 		jump_power = 0
 	
 	if Input.is_action_pressed("jump") and locked_jump:
+		print(jump_power)
 		jump_power += 10
 	if Input.is_action_just_released("jump") and locked_jump:
 		self.velocity = Vector2.from_angle(pointer_angle) * jump_power
