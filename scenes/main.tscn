@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://85uhplkpkgx8" path="res://scenes/Level.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ce8s2rqlgoua3" path="res://scenes/background.tscn" id="4_jyhfs"]
 [ext_resource type="AudioStream" uid="uid://8jsnodt8kplw" path="res://assets/sound/masked frustration-maybe loop.wav" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://5fynkqfk5mb2" path="res://assets/IMG_5467.png" id="6_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=447890055]
 script = ExtResource("1_o5qli")
@@ -22,6 +23,8 @@ repeat_size = Vector2(0, 1500)
 repeat_times = 7
 
 [node name="Player" parent="." unique_id=786890291 instance=ExtResource("2_0wfyh")]
+z_index = 10
+position = Vector2(310, -4787)
 
 [node name="Level" parent="." unique_id=1286472519 instance=ExtResource("3_sugp2")]
 z_index = -10
@@ -29,3 +32,8 @@ z_index = -10
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1086092888]
 stream = ExtResource("5_tbgi4")
 autoplay = true
+
+[node name="Penny" type="Sprite2D" parent="." unique_id=871567323]
+position = Vector2(261, -4947)
+scale = Vector2(0.27688888, 0.2768889)
+texture = ExtResource("6_tefeu")
