@@ -74,21 +74,43 @@ func handle_jumping() -> void:
 	if not self.pointer.visible:
 		self.pointer.visible = true
 
+	# Move the pointer if the jump angle isn't locked in
 	if not locked_jump:
 		move_pointer()
 	
+	# Locking in jump angle
 	if Input.is_action_just_pressed("jump") and not locked_jump:
 		locked_jump = true
-		jump_power = 0
+		jump_power = 0.0
 	
+	# Charge up jump
 	if Input.is_action_pressed("jump") and locked_jump:
 		print(jump_power)
-		jump_power += 10
+		jump_power += 0.02
+		# Change color of pointer for how fast (temp)
+		var tier = snappedi(jump_power, 1)
+		if tier == 0:
+			self.pointer.modulate = Color(0, 0, 1)
+		elif tier == 1:
+			self.pointer.modulate = Color(0, 1, 0)
+		elif tier >= 2:
+			self.pointer.modulate = Color(1, 0, 0)
+
+
+	# Actually jumping
 	if Input.is_action_just_released("jump") and locked_jump:
-		self.velocity = Vector2.from_angle(pointer_angle) * jump_power
+		var tier = snappedi(jump_power, 1)
+		if tier == 0:
+			self.velocity = Vector2.from_angle(pointer_angle) * jump_low
+		elif tier == 1:
+			self.velocity = Vector2.from_angle(pointer_angle) * jump_medium
+		elif tier >= 2:
+			print("big jump")
+			self.velocity = Vector2.from_angle(pointer_angle) * jump_high
 		self.locked_jump = false
 		self.pointer.visible = false
 		self.state = States.WALKING
+		self.pointer.modulate = Color(1, 1, 1)
 	return
 
 # Gravity
