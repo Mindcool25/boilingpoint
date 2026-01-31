@@ -86,7 +86,6 @@ func handle_jumping() -> void:
 	
 	# Charge up jump
 	if Input.is_action_pressed("jump") and locked_jump:
-		print(jump_power)
 		jump_power += 0.02
 		# Change color of pointer for how fast (temp)
 		var tier = snappedi(jump_power, 1)
@@ -106,7 +105,6 @@ func handle_jumping() -> void:
 		elif tier == 1:
 			self.velocity = Vector2.from_angle(pointer_angle) * jump_medium
 		elif tier >= 2:
-			print("big jump")
 			self.velocity = Vector2.from_angle(pointer_angle) * jump_high
 		self.locked_jump = false
 		self.pointer.visible = false
