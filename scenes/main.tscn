@@ -8,7 +8,7 @@
 [node name="Main" type="Node2D" unique_id=447890055]
 script = ExtResource("1_o5qli")
 LockVelocity = 3000.0
-ScreenEdges = 310.0
+ScreenEdges = 150.0
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1541486730]
 position_smoothing_enabled = true
