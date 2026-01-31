@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var jump_medium: float = 0.0
 @export var jump_high: float = 0.0
 
+@export var anim_sprite: AnimatedSprite2D = null
+
 
 enum States {WALKING, JUMPING, IN_AIR}
 
@@ -26,6 +28,27 @@ var jump_power: float = 0.0
 func _ready() -> void:
 	self.pointer.visible = true
 	pass # Replace with function body.
+
+
+# Animation in process because I'm lazy
+func _process(delta: float) -> void:
+	if self.state == States.WALKING:
+		if Input.is_action_pressed("right"):
+			self.anim_sprite.flip_h = false
+			self.anim_sprite.play("walk")
+		elif Input.is_action_pressed("left"):
+			self.anim_sprite.flip_h = true
+			self.anim_sprite.play("walk")
+		else:
+			self.anim_sprite.play("default")
+
+	if self.state == States.JUMPING:
+		if self.pointer_angle > 3 * PI / 2:
+			self.anim_sprite.flip_h = false
+		else:
+			self.anim_sprite.flip_h = true
+		pass
+	return
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,10 +103,19 @@ func handle_jumping() -> void:
 		var tier = snappedi(jump_power, 1)
 		if tier == 0:
 			self.pointer.modulate = Color(0, 0, 1)
+			self.anim_sprite.play("charge")
+			self.anim_sprite.stop()
+			self.anim_sprite.frame = 0
 		elif tier == 1:
 			self.pointer.modulate = Color(0, 1, 0)
+			self.anim_sprite.play("charge")
+			self.anim_sprite.stop()
+			self.anim_sprite.frame = 1
 		elif tier >= 2:
 			self.pointer.modulate = Color(1, 0, 0)
+			self.anim_sprite.play("charge")
+			self.anim_sprite.stop()
+			self.anim_sprite.frame = 2
 
 
 	# Actually jumping
