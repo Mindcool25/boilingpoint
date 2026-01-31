@@ -34,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	# State machine
 	match state:
 		States.WALKING:
+			self.pointer.modulate = Color(1, 1, 1)
 			# Change to jumping action if walking
 			if Input.is_action_pressed("jump"):
 				state = States.JUMPING
