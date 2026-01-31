@@ -77,12 +77,14 @@ func _physics_process(delta: float) -> void:
 	if not locked_jump:
 		move_pointer()
 
-
 	# Changing states if in the air
 	if not self.is_on_floor():
 		state = States.IN_AIR
 	elif state != States.JUMPING:
 		state = States.WALKING
+		self.gravity = 4000
+	else:
+		self.gravity = 4000
 	
 	if state != States.WALKING and self.is_on_floor():
 		self.land_sound.play()
@@ -150,6 +152,8 @@ func handle_jumping() -> void:
 # Gravity
 func handle_air(delta: float) -> void:
 	self.velocity.y += gravity * delta
+	if self.velocity.y > 0:
+		self.gravity = 2000
 	return
 
 # Move pointer between the two max angles of jumping
