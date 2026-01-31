@@ -148,7 +148,20 @@ tile_set = SubResource("TileSet_6vs76")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2013716069]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1722772637]
-position = Vector2(-45, -53)
+position = Vector2(329, -1631)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_sv41r")
 frame_progress = 0.5014094
 offset = Vector2(9, -8)
+
+[node name="Label" type="Label" parent="AnimatedSprite2D" unique_id=1824126198]
+anchors_preset = -1
+anchor_left = 0.404
+anchor_top = 0.65400004
+anchor_right = 0.404
+anchor_bottom = 0.65400004
+offset_left = -86.52267
+offset_top = -86.522675
+offset_right = 40.477318
+offset_bottom = -63.52267
+text = "Next Semester..."
